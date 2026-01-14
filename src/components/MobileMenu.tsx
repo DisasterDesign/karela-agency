@@ -3,46 +3,13 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { X } from 'lucide-react'
 
 interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
   links: { href: string; label: string }[]
-}
-
-const contentVariants = {
-  closed: {
-    opacity: 0,
-    y: -20,
-    transition: {
-      duration: 0.2,
-    },
-  },
-  open: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.3,
-      delay: 0.1,
-    },
-  },
-}
-
-const linkVariants = {
-  closed: {
-    opacity: 0,
-    y: 20,
-  },
-  open: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.4,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  },
 }
 
 export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) {

@@ -27,7 +27,7 @@ const hotels: Hotel[] = [
     id: 2,
     name: 'DAN INDIA',
     location: 'India',
-    slides: [{ type: 'images', src: ['/hotels/DAN INDIA 1.jpg', '/hotels/DAN INDIA 2.jpg'] }],
+    slides: [{ type: 'images', src: ['/hotels/DAN-INDIA-1.jpg', '/hotels/DAN-INDIA-2.jpg'] }],
   },
   {
     id: 3,
@@ -36,10 +36,10 @@ const hotels: Hotel[] = [
     slides: [{
       type: 'images',
       src: [
-        '/hotels/Hotel Bachaumont   1.jpg',
-        '/hotels/Hotel Bachaumont   2.jpg',
-        '/hotels/Hotel Bachaumont  3.png',
-        '/hotels/Hotel Bachaumont   4.png',
+        '/hotels/Hotel-Bachaumont---1.jpg',
+        '/hotels/Hotel-Bachaumont---2.jpg',
+        '/hotels/Hotel-Bachaumont--3.png',
+        '/hotels/Hotel-Bachaumont---4.png',
       ],
     }],
   },
@@ -47,7 +47,7 @@ const hotels: Hotel[] = [
     id: 4,
     name: 'SIX SENSES',
     location: 'Shaharut, Negev',
-    slides: [{ type: 'images', src: ['/hotels/SIX SENSES  .jpg'] }],
+    slides: [{ type: 'images', src: ['/hotels/SIX-SENSES--.jpg'] }],
   },
   {
     id: 5,
@@ -58,10 +58,10 @@ const hotels: Hotel[] = [
       {
         type: 'images',
         src: [
-          '/hotels/PERHE  1.jpg',
-          '/hotels/PERHE  2.jpg',
-          '/hotels/PERHE  3.png',
-          '/hotels/PERHE  4.png',
+          '/hotels/PERHE--1.jpg',
+          '/hotels/PERHE--2.jpg',
+          '/hotels/PERHE--3.png',
+          '/hotels/PERHE--4.png',
         ],
       },
     ],
@@ -71,8 +71,8 @@ const hotels: Hotel[] = [
     name: 'HOTEL MONTEFIORE',
     location: 'Tel Aviv',
     slides: [
-      { type: 'video', src: '/hotels/Hotel Montefiore.mp4' },
-      { type: 'images', src: ['/hotels/Hotel Montefiore  1.jpg', '/hotels/Hotel Montefiore  2.jpg'] },
+      { type: 'video', src: '/hotels/Hotel-Montefiore.mp4' },
+      { type: 'images', src: ['/hotels/Hotel-Montefiore--1.jpg', '/hotels/Hotel-Montefiore--2.jpg'] },
     ],
   },
   {
@@ -82,10 +82,10 @@ const hotels: Hotel[] = [
     slides: [{
       type: 'images',
       src: [
-        '/hotels/R48 - 1.jpg',
-        '/hotels/R48 - 2.jpg',
-        '/hotels/R48 - 3.jpg',
-        '/hotels/R48 - 4.jpg',
+        '/hotels/R48---1.jpg',
+        '/hotels/R48---2.jpg',
+        '/hotels/R48---3.jpg',
+        '/hotels/R48---4.jpg',
       ],
     }],
   },
@@ -93,7 +93,7 @@ const hotels: Hotel[] = [
     id: 8,
     name: 'JAFFA HOTEL',
     location: 'Jaffa',
-    slides: [{ type: 'images', src: ['/hotels/Jaffa Hotel   1.jpg', '/hotels/Jaffa Hotel  2.jpg'] }],
+    slides: [{ type: 'images', src: ['/hotels/Jaffa-Hotel---1.jpg', '/hotels/Jaffa-Hotel--2.jpg'] }],
   },
 ]
 

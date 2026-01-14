@@ -3,6 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { photographers } from '@/lib/agency-data'
 
+export async function generateStaticParams() {
+  return Object.keys(photographers).map((name) => ({
+    name,
+  }))
+}
+
 export default async function PhotographerPage({
   params,
 }: {

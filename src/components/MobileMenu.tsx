@@ -77,7 +77,7 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[100] bg-background/98 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] bg-white"
           variants={menuVariants}
           initial="closed"
           animate="open"
@@ -86,7 +86,7 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 text-foreground hover:opacity-70 transition-opacity p-2"
+            className="absolute top-6 right-6 text-black hover:opacity-70 transition-opacity p-2"
             aria-label="Close menu"
           >
             <X size={28} />
@@ -124,7 +124,7 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
                   <Link
                     href={link.href}
                     onClick={onClose}
-                    className="text-foreground text-2xl md:text-3xl font-medium tracking-[0.15em] uppercase hover:opacity-70 transition-opacity"
+                    className="text-black text-2xl md:text-3xl font-medium tracking-[0.15em] uppercase hover:opacity-70 transition-opacity"
                   >
                     {link.label}
                   </Link>
@@ -137,7 +137,7 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="w-16 h-px bg-foreground mt-12"
+              className="w-16 h-px bg-black mt-12"
             />
           </div>
         </motion.div>

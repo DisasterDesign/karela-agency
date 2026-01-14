@@ -244,7 +244,7 @@ export default function Hotels() {
     <div className="min-h-screen bg-[#F7F7F5] lg:pl-64">
       <div className="grid grid-cols-1 lg:grid-cols-[3fr_1fr]">
         {/* Media Sections - Left (75%) */}
-        <div className="h-screen overflow-y-auto snap-y snap-mandatory">
+        <div className="h-screen overflow-y-auto snap-y snap-mandatory" ref={scrollContainerRef}>
           {sections.map((section, index) => (
             <section
               key={`${section.hotelIndex}-${index}`}
@@ -256,6 +256,42 @@ export default function Hotels() {
               </div>
             </section>
           ))}
+        </div>
+
+        {/* Mobile Bottom Overlay */}
+        <div className="fixed bottom-0 left-0 right-0 lg:hidden bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 pt-16 z-50">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeHotelIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+            >
+              <h2 className="text-white text-xl font-bold tracking-[0.1em] uppercase">
+                {activeSection?.hotelName}
+              </h2>
+              <p className="text-white/70 text-sm tracking-wider">
+                {activeSection?.hotelLocation}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Dot navigation */}
+          <div className="flex gap-2 mt-4">
+            {hotels.map((hotel, i) => (
+              <button
+                key={hotel.id}
+                onClick={() => scrollToHotel(i)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  i === activeHotelIndex
+                    ? 'bg-white w-6'
+                    : 'bg-white/40'
+                }`}
+                aria-label={hotel.name}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Content Section - Right (25%) - Sticky */}

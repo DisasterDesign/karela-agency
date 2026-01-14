@@ -21,7 +21,7 @@ export default function MobileHeader() {
 
   return (
     <>
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/50 backdrop-blur-sm">
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white">
         <div className="flex items-center justify-between px-6 py-4">
           {/* Logo */}
           <Link href="/" className="hover:opacity-70 transition-opacity">

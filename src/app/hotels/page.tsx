@@ -112,17 +112,17 @@ export default function Hotels() {
 
   // Flatten hotels into sections for scroll-snap
   const sections: FlatSection[] = useMemo(() => {
-    return hotels.flatMap((hotel, hotelIndex) => {
+    return hotels.flatMap((hotel, hotelIndex): FlatSection[] => {
       if (hotel.slides.length === 0) {
         return [{
-          type: 'placeholder' as const,
+          type: 'placeholder',
           src: '',
           hotelName: hotel.name,
           hotelLocation: hotel.location,
           hotelIndex,
         }]
       }
-      return hotel.slides.map((slide) => ({
+      return hotel.slides.map((slide): FlatSection => ({
         type: slide.type,
         src: slide.src,
         hotelName: hotel.name,

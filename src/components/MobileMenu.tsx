@@ -12,34 +12,20 @@ interface MobileMenuProps {
   links: { href: string; label: string }[]
 }
 
-const menuVariants = {
+const contentVariants = {
   closed: {
     opacity: 0,
+    y: -20,
     transition: {
-      duration: 0.3,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      duration: 0.2,
     },
   },
   open: {
     opacity: 1,
+    y: 0,
     transition: {
       duration: 0.3,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  },
-}
-
-const linkContainerVariants = {
-  closed: {
-    transition: {
-      staggerChildren: 0.05,
-      staggerDirection: -1,
-    },
-  },
-  open: {
-    transition: {
-      delayChildren: 0.1,
-      staggerChildren: 0.08,
+      delay: 0.1,
     },
   },
 }
@@ -73,75 +59,66 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
     }
   }, [isOpen])
 
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          className="fixed inset-0 z-[100] bg-white"
-          variants={menuVariants}
-          initial="closed"
-          animate="open"
-          exit="closed"
-        >
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-6 right-6 text-black hover:opacity-70 transition-opacity p-2"
-            aria-label="Close menu"
-          >
-            <X size={28} />
-          </button>
+  if (!isOpen) return null
 
-          {/* Menu Content */}
-          <div className="h-full flex flex-col items-center justify-center">
-            {/* Logo */}
+  return (
+    <div className="fixed inset-0 z-[100] bg-white">
+      {/* Close Button */}
+      <button
+        onClick={onClose}
+        className="absolute top-6 right-6 text-black hover:opacity-70 transition-opacity p-2 z-10"
+        aria-label="Close menu"
+      >
+        <X size={28} />
+      </button>
+
+      {/* Menu Content */}
+      <div className="h-full flex flex-col items-center justify-center">
+        {/* Logo */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.4 }}
+          className="mb-12"
+        >
+          <Link href="/" onClick={onClose}>
+            <Image
+              src="/logo main.svg"
+              alt="Karela Agency"
+              width={80}
+              height={80}
+            />
+          </Link>
+        </motion.div>
+
+        {/* Navigation Links */}
+        <nav className="flex flex-col items-center gap-6">
+          {links.map((link, index) => (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              key={link.href}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.4 }}
-              className="mb-12"
+              transition={{ delay: 0.15 + index * 0.05, duration: 0.4 }}
             >
-              <Link href="/" onClick={onClose}>
-                <Image
-                  src="/logo main.svg"
-                  alt="Karela Agency"
-                  width={80}
-                  height={80}
-                />
+              <Link
+                href={link.href}
+                onClick={onClose}
+                className="text-black text-2xl md:text-3xl font-medium tracking-[0.15em] uppercase hover:opacity-70 transition-opacity"
+              >
+                {link.label}
               </Link>
             </motion.div>
+          ))}
+        </nav>
 
-            {/* Navigation Links */}
-            <motion.nav
-              variants={linkContainerVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              className="flex flex-col items-center gap-6"
-            >
-              {links.map((link) => (
-                <motion.div key={link.href} variants={linkVariants}>
-                  <Link
-                    href={link.href}
-                    onClick={onClose}
-                    className="text-black text-2xl md:text-3xl font-medium tracking-[0.15em] uppercase hover:opacity-70 transition-opacity"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.nav>
-
-            {/* Decorative Line */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="w-16 h-px bg-black mt-12"
-            />
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        {/* Decorative Line */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="w-16 h-px bg-black mt-12"
+        />
+      </div>
+    </div>
   )
 }
